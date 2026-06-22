@@ -27,7 +27,6 @@ customer_orders as (
 
     from orders
 
-
     group by 1
 
 ),
@@ -41,6 +40,8 @@ customer_payment as (
     from orders
 
     inner join payments using(order_id)
+
+    where status = 'success'
 
     group by customer_id
 

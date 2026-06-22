@@ -1,8 +1,8 @@
 select 
     ID as payment_id,
     ORDERID as order_id,
-    AMOUNT,
+    amount / 100 as amount,
     PAYMENTMETHOD as payment_method,
     STATUS,
     _BATCHED_AT
-from raw.stripe.payment
+from {{ source('stripe', 'payment') }}
